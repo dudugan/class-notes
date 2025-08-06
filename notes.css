@@ -1,0 +1,305 @@
+/* to modify; forked from jan Kekan San's mun.la! */
+
+html {
+    font-size: 10px;
+    font-family: -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #fcfad1;
+    color: #222;
+}
+
+.body {
+    margin: 8% auto;
+    padding: 4%;
+    max-width: 80%;
+    color: #444;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2),0 15px 40px rgba(0,0,0,.05)
+}
+
+p {
+    margin: 0
+}
+
+p+p {
+    margin-top: 10px
+}
+
+.button {
+    width: 45px;
+    height: 31px;
+    margin: 10px;
+    box-shadow: .1em .1em 0 0 #000;
+    border: 2px solid #444;
+    border-radius: 3px;
+    image-rendering: pixelated;
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.button:hover {
+    box-shadow: .2em .2em 0 0 #000;
+    border: 2px solid #444;
+    cursor: pointer;
+}
+
+.button:active {
+    box-shadow: none
+}
+
+a {
+    text-decoration: underline #3366cc;
+    color: #36c
+}
+
+a:hover {
+    text-decoration: underline dotted
+}
+
+a:visited {
+    text-decoration: underline #7755bb;
+    color: #75b
+}
+
+.error,.info,.warning,blockquote {
+    margin: .5em;
+    padding: .5em;
+    border-radius: 4px
+}
+
+blockquote {
+    color: #333;
+    background: #ebe7e7;
+    border: 1px solid #333;
+    border-left: 4px solid #333
+}
+
+img {
+    max-width: 100%
+}
+
+.h1 {
+    border: 1px solid #00f;
+    background-color: #add8e6
+}
+
+.h2 {
+    border: 1px dotted #8b0000;
+    background-color: pink
+}
+
+.h3 {
+    border: 1px dashed green;
+    background-color: #f8f3b6
+}
+
+.h4 {
+    border: 1px solid #186b33;
+    background-color: #a7e7ca
+}
+
+.h5 {
+    border: 1px dashed #5b0c82;
+    background-color: #e2b7f7
+}
+
+.h1,.h2,.h3,.h4,.h5,code {
+    padding: 1px;
+    border-radius: 4px
+}
+
+code {
+    font-family: monospace;
+    background: #ebe7e7;
+    border: 1px solid #333
+}
+
+table {
+    width: 100%;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background: #ebe7e7;
+    border: 2px solid #444;
+    border-collapse: collapse
+}
+
+thead {
+    border: 2px solid #444
+}
+
+td,th {
+    border: 1px solid #444;
+    padding: 2px
+}
+
+hr {
+    border: 1px solid #444;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em
+}
+
+.details {
+    display: block;
+    color: #443231;
+    background: #e2c49c;
+    border: 1px solid #443231;
+    border-left: 4px solid #443231;
+    margin: .5em;
+    border-radius: 4px
+}
+
+.summary {
+    cursor: pointer;
+    padding: .5em;
+    list-style-position: outside
+}
+
+.details>p {
+    padding: .5em
+}
+
+.details[open] {
+    padding-bottom: .25em
+}
+
+.details[open]>.summary {
+    border-bottom: 1px solid #443231
+}
+
+.error:before,.info:before,.warning:before {
+    float: right;
+    font-size: 3em;
+    padding: .2em;
+    padding-top: .3em
+}
+
+.error,.info,.warning {
+    min-height: 1em
+}
+
+.info:before,
+.warning:before,
+.error:before {
+    font-size: 1.5em;
+}
+
+/* .info:before {
+    content: "★";
+}
+
+.warning:before {
+    content: "⚠";
+}
+
+.error:before {
+    content: "⚑";
+} */
+
+.info {
+    color: #00f;
+    background: #add8e6;
+    border: 1px solid #00f;
+    border-left: 4px solid #00f
+}
+
+.warning {
+    color: green;
+    background: #f8f3b6;
+    border: 1px solid green;
+    border-left: 4px solid green
+}
+
+.error {
+    color: #8b0000;
+    background: pink;
+    border: 1px solid #8b0000;
+    border-left: 4px solid #8b0000
+}
+
+td, th {
+    text-align: center;
+}
+
+@media (max-width: 470px) {
+    .button {
+        width:66px;
+        height: 31px
+    }
+}
+
+@media (min-width: 300px) {
+    html {
+        font-size:12px
+    }
+}
+
+@media (min-width: 450px) {
+    html {
+        font-size:14px
+    }
+}
+
+@media (min-width: 600px) {
+    html {
+        font-size:16px
+    }
+
+    .button {
+        width: 110px;
+        height: 38.75px
+    }
+}
+
+@media (min-width: 900px) {
+    html {
+        font-size:18px
+    }
+
+    .body {
+        max-width: 69%
+    }
+
+    .button {
+        width: 132px;
+        height: 46.5px
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size:20px
+    }
+
+    .button {
+        width: 176px;
+        height: 62px
+    }
+}
+
+@media (min-width: 1500px) {
+    html {
+        font-size:22px
+    }
+
+    .button {
+        width: 220px;
+        height: 77.5px
+    }
+}
+
+@media (min-width: 1800px) {
+    html {
+        font-size:24px
+    }
+
+    .button {
+        width: 264px;
+        height: 93px
+    }
+}
+
+@media (pointer: none),(pointer:coarse) {
+    html {
+        font-size:16px
+    }
+}
