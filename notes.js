@@ -1,8 +1,35 @@
 async function loadNotes(filepath) {
   const res = await fetch(`${filepath}`);
   const text = await res.text();
-  const html = parseNotes(text);
+  const html = parseNotes(processFootnotes(text));
   document.getElementById("content").innerHTML = html;
+}
+
+function processFootnotes(inputText) {
+  let footnotes = [];
+  let counter = 1;
+
+  // \f[footnote text]
+  let outputText = inputText.replace(/\\f\[(.*?)\]/g, (_, footnoteText) => {
+    const footnoteId = counter;
+    footnotes.push({
+      id: footnoteId,
+      text: footnoteText,
+    });
+    const sup = `<sup id="fnref${footnoteId}">
+    <a href="#fn${footnoteId}">[${footnoteId}]</a></sup>`;
+    counter++;
+    return sup;
+  });
+
+  // Footnotes at the end
+  let footnoteHTML = `<hr>\n<ol id="footnotes">\n`;
+  for (const note of footnotes) {
+    footnoteHTML += `  <li id="fn${note.id}">[${note.id}] ${note.text} <a href="#fnref${note.id}">↩</a></li>\n`;
+  }
+  footnoteHTML += `</ol>`;
+
+  return outputText + '\n\n' + footnoteHTML;
 }
 
 function parseNotes(text) {
@@ -35,8 +62,9 @@ function parseNotes(text) {
     .replace(/^\| (.*$)/gim, '<blockquote>$1</blockquote>') // | blockquote
     .replace(/^\\c([\s\S]*?)\\c/gim, '<pre><code>$1</code></pre>') // \c code block
 
-    // Links and Images
+    // Links, Images, and In-Text Citations
     .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1">') // ![alt text](image url)
+    .replace(/c\[(.*?)\]\(.*?)\)/gim, '<a class="citation" href="$2">$1</a>') // c[citationText](linkToZoteroPage)
     .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // [linkText](url)
 
     // Details and Summary
@@ -48,10 +76,7 @@ function parseNotes(text) {
             // > Nested Summary
             // Nested Details
             // >>(End of Nested Details)
-            // >>(End of Top-Level Details)
-
-    // in-text citation
-    
+            // >>(End of Top-Level Details)    
 
     // Comments / Annotations
     .replace(/&\[(.+?)\]\((.+?)\)/gim, 
@@ -59,10 +84,6 @@ function parseNotes(text) {
 
         // TODO: make comments look nice, not just title attributes
         // make them stay on click and disappear on click?
-
-    // Footnotes
-    
-
 
     // syntax trees
 
