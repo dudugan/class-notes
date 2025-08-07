@@ -1,3 +1,0 @@
-[submodule "path/to/subdirectory"]
-	path = path/to/subdirectory
-	url = https://github.com/dudugan/syntree
