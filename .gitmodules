@@ -1,0 +1,3 @@
+[submodule "syntree"]
+	path = syntree
+	url = https://github.com/dudugan/syntree
