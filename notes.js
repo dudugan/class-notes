@@ -85,8 +85,37 @@ function parseNotes(text) {
         // TODO: make comments look nice, not just title attributes
         // make them stay on click and disappear on click?
 
-    // TODO: syntax trees
+    // TREES
+    // everything between one \t and the next \t
+    // can have line breaks and tabs
+    // movement from [NP^ something<a>] to [TP_a something]
+    //
+    // EXAMPLE INPUT:
+    // \t [S [NP This] [VP [V is] [^NP a wug]]] \t
+    .replace(/\\t\s*([\s\S]*?)\s*\\t/g, (match, content) => {
 
+        const cleaned = content.replace(/[\n\r\t]/g, ' ') // replace newlines and tabs with a single space
+                                .replace(/\s+/g, ' ') // replace multiple spaces with a single space
+                                .trim(); // remove leading/trailing whitespace (prob not necessary?)
+
+        const fontSize = 14;
+        const termFont = `${fontSize}pt serif`;
+        const nontermFont = `${fontSize}pt serif`;
+        const vertSpace = 50;
+        const horSpace = 30;
+        const color = true;
+        const termLines = false;
+
+        const container = document.createElement('div');
+        container.style.textAlign = "center";
+
+        // generate tree with go() from syntree.js
+        const svg = go(cleaned, fontSize, termFont, nontermFont, vertSpace, horSpace, color, termLines);
+        container.appendChild(svg);
+
+        return container.outerHTML;
+    })
+    
     // LISTS
 
     // group consecutive lines starting with '- ' into <li>s in a <ul>
