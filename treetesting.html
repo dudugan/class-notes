@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style>
+            .tree ul {
+            padding-top: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            }
+
+            .tree li {
+            list-style-type: none;
+            text-align: center;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            }
+
+            .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-top: 2px solid #555;
+            width: 50%;
+            height: 20px;
+            }
+
+            .tree li::before {
+            right: 50%;
+            border-right: 2px solid #555;
+            }
+
+            .tree li::after {
+            left: 50%;
+            border-left: 2px solid #555;
+            }
+
+            .tree li:only-child::before,
+            .tree li:only-child::after {
+            display: none;
+            }
+
+            .tree li:only-child {
+            padding-top: 0;
+            }
+
+            .tree li:first-child::before,
+            .tree li:last-child::after {
+            border: 0 none;
+            }
+
+            .tree li:last-child::before {
+            border-right: 2px solid #555;
+            border-radius: 0 5px 0 0;
+            }
+
+            .tree li:first-child::after {
+            border-left: 2px solid #555;
+            border-radius: 5px 0 0 0;
+            }
+
+            .tree span {
+            border: 1px solid #555;
+            padding: 5px 10px;
+            display: inline-block;
+            border-radius: 5px;
+            background: #fff;
+            position: relative;
+            z-index: 1;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="tree">
+  <ul>
+    <li>
+      <span>Sentence</span>
+      <ul>
+        <li>
+          <span>NP</span>
+          <ul>
+            <li><span>Det</span></li>
+            <li><span>Noun</span></li>
+          </ul>
+        </li>
+        <li>
+          <span>VP</span>
+          <ul>
+            <li><span>Verb</span></li>
+            <li><span>NP</span>
+              <ul>
+                <li><span>Det</span></li>
+                <li><span>Noun</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    </body>
+</html>

@@ -85,7 +85,7 @@ function parseNotes(text) {
         // TODO: make comments look nice, not just title attributes
         // make them stay on click and disappear on click?
 
-    // syntax trees
+    // TODO: syntax trees
 
     // LISTS
 
