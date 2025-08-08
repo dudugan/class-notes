@@ -64,7 +64,7 @@ function parseNotes(text) {
 
     // Links, Images, and In-Text Citations
     .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1">') // ![alt text](image url)
-    .replace(/c\[(.*?)\]\(.*?)\)/gim, '<a class="citation" href="$2">$1</a>') // c[citationText](linkToZoteroPage)
+    .replace(/c\[(.*?)\]\((.*?)\)/gim, '<a class="citation" href="$2">$1</a>') // c[citationText](linkToZoteroPage)
     .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // [linkText](url)
 
     // Details and Summary
@@ -92,7 +92,7 @@ function parseNotes(text) {
     //
     // EXAMPLE INPUT:
     // \t [S [NP This] [VP [V is] [^NP a wug]]] \t
-    .replace(/\\t\s*([\s\S]*?)\s*\\t/g, (match, content) => {
+    .replace(/\s*\\t\s*([\s\S]*?)\s*\\t/g, (match, content) => {
 
         const cleaned = content.replace(/[\n\r\t]/g, ' ') // replace newlines and tabs with a single space
                                 .replace(/\s+/g, ' ') // replace multiple spaces with a single space
