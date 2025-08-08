@@ -1,39 +1,46 @@
 async function loadNotes(filepath) {
-  const res = await fetch(`${filepath}`);
-  const text = await res.text();
-  const html = parseNotes(processFootnotes(text));
-  document.getElementById("content").innerHTML = html;
+    console. log(`Loading notes from ${filepath}`);
+
+    const res = await fetch(`${filepath}`);
+    const text = await res.text();
+    const html = parseNotes(processFootnotes(text));
+    document.getElementById("content").innerHTML = html;
 }
 
 function processFootnotes(inputText) {
-  let footnotes = [];
-  let counter = 1;
+    console.log("Processing footnotes...");
 
-  // \f[footnote text]
-  let outputText = inputText.replace(/\\f\[(.*?)\]/g, (_, footnoteText) => {
-    const footnoteId = counter;
-    footnotes.push({
-      id: footnoteId,
-      text: footnoteText,
+    let footnotes = [];
+    let counter = 1;
+
+    // \f[footnote text]
+    let outputText = inputText.replace(/\\f\[(.*?)\]/g, (_, footnoteText) => {
+        const footnoteId = counter;
+        footnotes.push({
+            id: footnoteId,
+            text: footnoteText,
+        });
+        const sup = `<sup id="fnref${footnoteId}">
+        <a href="#fn${footnoteId}">[${footnoteId}]</a></sup>`;
+        counter++;
+        return sup;
     });
-    const sup = `<sup id="fnref${footnoteId}">
-    <a href="#fn${footnoteId}">[${footnoteId}]</a></sup>`;
-    counter++;
-    return sup;
-  });
 
-  // Footnotes at the end
-  let footnoteHTML = `<hr>\n<ol id="footnotes">\n`;
-  for (const note of footnotes) {
-    footnoteHTML += `  <li id="fn${note.id}">[${note.id}] ${note.text} <a href="#fnref${note.id}">↩</a></li>\n`;
-  }
-  footnoteHTML += `</ol>`;
+    // Footnotes at the end
+    let footnoteHTML = `<hr>\n<ol id="footnotes">\n`;
+    for (const note of footnotes) {
+        footnoteHTML += `  <li id="fn${note.id}">[${note.id}] ${note.text} 
+        <a href="#fnref${note.id}">↩</a></li>\n`;
+    }
+    footnoteHTML += `</ol>`;
 
-  return outputText + '\n\n' + footnoteHTML;
+    return outputText + '\n\n' + footnoteHTML;
 }
 
 function parseNotes(text) {
-  let html = text
+    console.log("Parsing notes...");
+
+    let html = text
 
     // Headings and Stuff
     .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1
