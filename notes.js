@@ -44,11 +44,11 @@ function parseNotes(text) {
     .replace(/^###### (.*$)/gim, '<h6>$1</h6>') // h6
 
     // Breaks and Rules
-    .replace(/^\n/gim, '<br>') // newline
-    .replace(/^\-\-\-(.*)$/gim, '<hr>') // horizontal rule
+    .replace(/^\n/gim, '<br>') // \n newline
+    .replace(/^\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
 
     // Hidden Comments
-    .replace(/^%.*$/gim, '') // remove comments (beginning with %)
+    .replace(/^%.*$/gim, '') // % remove comments
 
     // Basic Formatting
     .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // **bold**

@@ -1,0 +1,16 @@
+# Heading 1
+## Heading 2
+### Heading 3
+
+% comment
+
+This is *bold*. This is **italics**. This is ***bold italics***. 
+This is ~~strikethrough~~. This is _underline_. This is &inline code&. 
+
+Following is a horizontal rule:
+
+---
+
+| This is a block quote. 
+
+\c And this is a code block!
