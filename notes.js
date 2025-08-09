@@ -85,10 +85,6 @@ function parseNotes(text) {
             // Nested Details
             // >>(End of Nested Details)
             // >>(End of Top-Level Details)
-            
-    // Breaks and Rules (this has to come mostly last)
-    .replace(/^\s*\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
-    .replace(/^\n/gim, '<br>') // \n newline
 
     // TREES
     // everything between one \t and the next \t
@@ -121,25 +117,43 @@ function parseNotes(text) {
         return container.outerHTML;
     })
     
-    // LISTS
+    // LISTS (SANDWICH!)
 
-    // group consecutive lines starting with '- ' into <li>s in a <ul>
-    .replace(/((?:^\- .*(?:\n|$))+)/gim, match => {
-      const items = match.trim().split('\n').map(line => {
-        const item = line.replace(/^\- (.*)/, '$1');
-        return `<li>${item}</li>`;
-      }).join('');
-      return `<ul>${items}</ul>`;
-    })
+    // OR: '\t- ' signals start of unordered list
+    // '\t1. ' signals start of ordered list'
+
+
+
+
+    .replace(/^\s*\-\-\s/gim, '<ul><li>') // -- start of unordered list
+    .replace(/^\s*1.\s/gim, '<ul><li>') // -- start of ordered list
+    .replace(/^\s*\-\s/gim, '</li><li>') // - next list item
+    .replace(/^\s*\-\-u/gim, '</li></ul>') // --u end of unordered list
+    .replace(/^\s*\-\-o/gim, '</li></ul>') // --o end of ordered list
+
+
+
+    // // group consecutive lines starting with '- ' into <li>s in a <ul>
+    // .replace(/((?:^\- .*(?:\n|$))+)/gim, match => {
+    //   const items = match.trim().split('\n').map(line => {
+    //     const item = line.replace(/^\- (.*)/, '$1');
+    //     return `<li>${item}</li>`;
+    //   }).join('');
+    //   return `<ul>${items}</ul>`;
+    // })
     // group consecutive lines starting with '1. ', '2. ', etc. or '1) ', '2) ', etc.
     // into <li>s in a <ol>
-    .replace(/((?:^(?:\d+\.\s|\d+\)\s).*(?:\n|$))+)/gim, match => {
-      const items = match.trim().split('\n').map(line => {
-        const item = line.replace(/^(?:\d+\.\s|\d+\)\s)(.*)/, '$1');
-        return `<li>${item}</li>`;
-      }).join('');
-      return `<ol>${items}</ol>`;
-    });
+    // .replace(/((?:^(?:\d+\.\s|\d+\)\s).*(?:\n|$))+)/gim, match => {
+    //   const items = match.trim().split('\n').map(line => {
+    //     const item = line.replace(/^(?:\d+\.\s|\d+\)\s)(.*)/, '$1');
+    //     return `<li>${item}</li>`;
+    //   }).join('');
+    //   return `<ol>${items}</ol>`;
+    // })
+
+    // Breaks and Rules (this has to come mostly last)
+    .replace(/^\s*\-\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
+    .replace(/^\n/gim, '<br>'); // \n newline
 
     // Numbered Examples
     let exampleCount = 0;

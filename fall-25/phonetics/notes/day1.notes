@@ -7,6 +7,34 @@
 This is *bold*. This is **italics**. This is ***bold italics***. 
 This is ~~strikethrough~~. This is _underline_. This is &inline code&. 
 
+Following is an unordered list:
+-- something
+- something else
+- a third thing
+    -- a separate new third thing
+    - another separate new third thing
+        -- a first second third thing
+        - a second second third thing
+        --u
+    - a third third thing
+    --u
+- a fourth thing
+--u
+
+And now an ordered one:
+
+1. something
+- another thing
+- a third thing
+1. a nested 3.1
+- a nested 3.2
+1. a nested 3.2.1
+- a nested 3.2.2
+--o
+- a nested 3.3
+--o
+- an un-nested fourth thing
+--o
 
 Following will be a summary and some details:
 
@@ -24,7 +52,7 @@ This is an &[annotation](that says this).
 
 Following is a horizontal rule:
 
----
+----
 
 | This is a block quote. 
 
