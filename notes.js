@@ -65,6 +65,10 @@ function parseNotes(text) {
     .replace(/^\s*\|\s?(.*)\r?$/gm, '<blockquote>$1</blockquote>')
     .replace(/^\c([\s\S]*?)\c/gim, '<pre><code>$1</code></pre>') // \c code block
 
+    // Annotations
+    .replace(/&\[(.+?)\]\((.+?)\)/gim, // &[seen text](hover text)
+        '<span class="comment" title="$2">$1</span>')
+
     // Links, Images, and In-Text Citations
     .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1">') // ![alt text](image url)
     .replace(/c\[(.*?)\]\((.*?)\)/gim, '<a class="citation" href="$2">$1</a>') // c[citationText](linkToZoteroPage)
@@ -85,13 +89,6 @@ function parseNotes(text) {
     // Breaks and Rules (this has to come mostly last)
     .replace(/^\s*\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
     .replace(/^\n/gim, '<br>') // \n newline
-
-    // Annotations
-    .replace(/&\[(.+?)\]\((.+?)\)/gim, // &[seen text](hover text)
-        '<span class="comment" title="$2">$1</span>')
-
-        // TODO: make comments look nice, not just title attributes
-        // make them stay on click and disappear on click?
 
     // TREES
     // everything between one \t and the next \t
@@ -151,10 +148,6 @@ function parseNotes(text) {
         return `<div class="example">
         ${exampleCount}. ${exampleContent}</div>`;
     });
-
-    // TODO: make numbered examples referenceable in text so that:
-        // a) referencing an example links to it
-        // and b) the reference number changes if the example order changes 
 
   return html;
 }

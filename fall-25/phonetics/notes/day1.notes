@@ -19,6 +19,7 @@ Nested Details
 
 This is a c[citation](link). 
 This is [another link](link).
+This is an &[annotation](that says this).
 
 
 Following is a horizontal rule:

@@ -1,0 +1,10 @@
+- syntax trees
+- lists
+- numbered examples
+- footnotes
+
+// TODO: make numbered examples referenceable in text so that:
+        // a) referencing an example links to it
+        // and b) the reference number changes if the example order changes 
+
+- annotations
