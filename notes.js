@@ -14,7 +14,8 @@ function processFootnotes(inputText) {
     let counter = 1;
 
     // \f[footnote text]
-    let outputText = inputText.replace(/\\f\[(.*?)\]/g, (_, footnoteText) => {
+    let outputText = inputText.replace(/\\f\[(.*?)\]/g, 
+            (_, footnoteText) => {
         const footnoteId = counter;
         footnotes.push({
             id: footnoteId,
@@ -27,7 +28,7 @@ function processFootnotes(inputText) {
     });
 
     // Footnotes at the end
-    let footnoteHTML = `<hr>\n<ol id="footnotes">\n`;
+    let footnoteHTML = `<hr>\n<ol class="square-brackets" id="footnotes">\n`;
     for (const note of footnotes) {
         footnoteHTML += `  <li id="fn${note.id}">[${note.id}] ${note.text} 
         <a href="#fnref${note.id}">↩</a></li>\n`;

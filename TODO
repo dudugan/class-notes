@@ -1,5 +1,4 @@
 - syntax trees
-- lists
 - numbered examples
 - footnotes
 
@@ -8,3 +7,4 @@
         // and b) the reference number changes if the example order changes 
 
 - annotations
+- better lists

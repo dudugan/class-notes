@@ -47,6 +47,10 @@ p+p {
     box-shadow: none
 }
 
+ol.square-brackets {
+  list-style: none; /* Remove default numbers */
+}
+
 a {
     text-decoration: underline #3366cc;
     color: #36c

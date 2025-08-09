@@ -9,7 +9,7 @@ This is ~~strikethrough~~. This is _underline_. This is &inline code&.
 
 Following is an unordered list:
 -- something
-- something else
+- something else \f[footnote2!]
 - a third thing
     -- a separate new third thing
     - another separate new third thing
@@ -21,7 +21,7 @@ Following is an unordered list:
 - a fourth thing
 --u
 
-And now an ordered one:
+And now an ordered one:\f[footnote 1!]
 
 1. something
 - another thing
