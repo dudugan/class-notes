@@ -50,28 +50,25 @@ function parseNotes(text) {
     .replace(/^##### (.*$)/gim, '<h5>$1</h5>') // h5
     .replace(/^###### (.*$)/gim, '<h6>$1</h6>') // h6
 
-    // Breaks and Rules
-    .replace(/^\n/gim, '<br>') // \n newline
-    .replace(/^\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
-
     // Hidden Comments
-    .replace(/^%.*$/gim, '') // % remove comments
+    .replace(/^\s*\%.*$/gim, '') // % remove comments
 
     // Basic Formatting
     .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // **bold**
     .replace(/\*(.*?)\*/gim, '<em>$1</em>') // *italics*
-        // note: this should support ***bold italics*** as well
-    .replace(/~~(.*?)~~/gim, '<del>$1</del>') // ~~strikethrough~~
-    .replace(/_(.*?)_/gim, '<u>$1</u>') // _underline_
-    .replace(/&(.*?)&/gim, '<code>$1</code>') // &inline code&
+        // note: this supports ***bold italics*** as well
+    .replace(/\~\~(.*?)\~\~/gim, '<del>$1</del>') // ~~strikethrough~~
+    .replace(/\_(.*?)\_/gim, '<u>$1</u>') // _underline_
+    .replace(/\&(.*?)\&/gim, '<code>$1</code>') // &inline code&
 
     // Block Types
-    .replace(/^\| (.*$)/gim, '<blockquote>$1</blockquote>') // | blockquote
-    .replace(/^\\c([\s\S]*?)\\c/gim, '<pre><code>$1</code></pre>') // \c code block
+    .replace(/^\s*\|\s?(.*)\r?$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^\c([\s\S]*?)\c/gim, '<pre><code>$1</code></pre>') // \c code block
 
     // Links, Images, and In-Text Citations
     .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1">') // ![alt text](image url)
     .replace(/c\[(.*?)\]\((.*?)\)/gim, '<a class="citation" href="$2">$1</a>') // c[citationText](linkToZoteroPage)
+        // links need to come last
     .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>') // [linkText](url)
 
     // Details and Summary
@@ -83,10 +80,14 @@ function parseNotes(text) {
             // > Nested Summary
             // Nested Details
             // >>(End of Nested Details)
-            // >>(End of Top-Level Details)    
+            // >>(End of Top-Level Details)
+            
+    // Breaks and Rules (this has to come mostly last)
+    .replace(/^\s*\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
+    .replace(/^\n/gim, '<br>') // \n newline
 
-    // Comments / Annotations
-    .replace(/&\[(.+?)\]\((.+?)\)/gim, 
+    // Annotations
+    .replace(/&\[(.+?)\]\((.+?)\)/gim, // &[seen text](hover text)
         '<span class="comment" title="$2">$1</span>')
 
         // TODO: make comments look nice, not just title attributes
