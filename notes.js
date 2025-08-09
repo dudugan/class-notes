@@ -118,21 +118,11 @@ function parseNotes(text) {
     })
     
     // LISTS (SANDWICH!)
-
-    // OR: '\t- ' signals start of unordered list
-    // '\t1. ' signals start of ordered list'
-
-
-
-
     .replace(/^\s*\-\-\s/gim, '<ul><li>') // -- start of unordered list
-    .replace(/^\s*1.\s/gim, '<ul><li>') // -- start of ordered list
+    .replace(/^\s*1.\s/gim, '<ul><li>') // 1. start of ordered list
     .replace(/^\s*\-\s/gim, '</li><li>') // - next list item
     .replace(/^\s*\-\-u/gim, '</li></ul>') // --u end of unordered list
     .replace(/^\s*\-\-o/gim, '</li></ul>') // --o end of ordered list
-
-
-
     // // group consecutive lines starting with '- ' into <li>s in a <ul>
     // .replace(/((?:^\- .*(?:\n|$))+)/gim, match => {
     //   const items = match.trim().split('\n').map(line => {
