@@ -8,6 +8,15 @@ This is *bold*. This is **italics**. This is ***bold italics***.
 This is ~~strikethrough~~. This is _underline_. This is &inline code&. 
 
 
+Following will be a summary and some details:
+
+> Summary
+Details
+> Nested Summary
+Nested Details
+>>
+>>
+
 This is a c[citation](link). 
 This is [another link](link).
 
