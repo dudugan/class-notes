@@ -9,7 +9,12 @@
 Following is a syntax tree!!!!!!!:
 
 
-\e \t [S [NP That] [VP [V is] [^NP a wug]]] \t \z
+\e \t [S [NP_a That] [VP [V is] [^NP a wug<a>]]] \t \z
+
+Following is another syntax tree!!!!!!!:
+
+
+\e \t [S [NP This] [VP [V is] [^NP a second wug]]] \t \z
 
 This is *bold*. This is **italics**. This is ***bold italics***. 
 This is ~~strikethrough~~. This is _underline_. This is &inline code&. 

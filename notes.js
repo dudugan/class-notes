@@ -122,6 +122,7 @@ function parseNotes(text) {
         // generate svg tree
         const went = go(cleaned, fontSize, termFont, nontermFont, vertSpace, horSpace, color, termLines);
         const svgMarkup = new XMLSerializer().serializeToString(went);
+        num_trees++;
         return svgMarkup; 
     })
     
@@ -131,23 +132,6 @@ function parseNotes(text) {
     .replace(/^\s*\-\s/gim, '</li><li>') // - next list item
     .replace(/^\s*\-\-u/gim, '</li></ul>') // --u end of unordered list
     .replace(/^\s*\-\-o/gim, '</li></ul>') // --o end of ordered list
-    // // group consecutive lines starting with '- ' into <li>s in a <ul>
-    // .replace(/((?:^\- .*(?:\n|$))+)/gim, match => {
-    //   const items = match.trim().split('\n').map(line => {
-    //     const item = line.replace(/^\- (.*)/, '$1');
-    //     return `<li>${item}</li>`;
-    //   }).join('');
-    //   return `<ul>${items}</ul>`;
-    // })
-    // group consecutive lines starting with '1. ', '2. ', etc. or '1) ', '2) ', etc.
-    // into <li>s in a <ol>
-    // .replace(/((?:^(?:\d+\.\s|\d+\)\s).*(?:\n|$))+)/gim, match => {
-    //   const items = match.trim().split('\n').map(line => {
-    //     const item = line.replace(/^(?:\d+\.\s|\d+\)\s)(.*)/, '$1');
-    //     return `<li>${item}</li>`;
-    //   }).join('');
-    //   return `<ol>${items}</ol>`;
-    // })
 
     // Breaks and Rules (this has to come mostly last)
     .replace(/^\s*\-\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
