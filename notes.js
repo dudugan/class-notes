@@ -1,3 +1,27 @@
+// *****************************
+// ***** TREE OPTIONS HERE *****
+// *****************************
+
+// font size
+var fontSize = 14;
+// non-terminals
+var nontermColor = "royalblue"; 
+var nontermFont = `${fontSize}pt Times New Roman, serif`; 
+// terminals
+var termColor = "purple";
+var termFont = `${fontSize}pt Comic Sans MS, sans-serif`;
+// background
+var treeBackground = "#fcfad1";
+// vertical and horizontal space between nodes
+var vertSpace = 50;
+var horSpace = 30; 
+// do you want colorful trees?
+const color = true;
+// do you want lines before terminal nodes?
+const termLines = false;
+
+// *****************************
+
 async function loadNotes(filepath) {
     console. log(`Loading notes from ${filepath}`);
 
@@ -102,15 +126,6 @@ function parseNotes(text) {
             .replace(/[\n\r\t]/g, ' ') // replace newlines and tabs with a single space
             .replace(/\s+/g, ' ') // replace multiple spaces with a single space
             .trim(); // remove leading/trailing whitespace (prob not necessary?)
-
-        // parameters for tree visual
-        const fontSize = 14;
-        const termFont = `${fontSize}pt serif`;
-        const nontermFont = `${fontSize}pt serif`;
-        const vertSpace = 50;
-        const horSpace = 30;
-        const color = true;
-        const termLines = false;
 
         // unique wrapper and id for each tree
         const idx = num_trees;
