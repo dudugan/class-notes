@@ -40,6 +40,7 @@ function processFootnotes(inputText) {
 
 function parseNotes(text) {
     console.log("Parsing notes...");
+    var num_trees = 0; 
 
     let html = text
 
@@ -96,10 +97,13 @@ function parseNotes(text) {
     // \t [S [NP This] [VP [V is] [^NP a wug]]] \t
     .replace(/\s*\\t\s*([\s\S]*?)\s*\\t/g, (match, content) => {
 
-        const cleaned = content.replace(/[\n\r\t]/g, ' ') // replace newlines and tabs with a single space
-                                .replace(/\s+/g, ' ') // replace multiple spaces with a single space
-                                .trim(); // remove leading/trailing whitespace (prob not necessary?)
+        // clean tree text
+        const cleaned = content
+            .replace(/[\n\r\t]/g, ' ') // replace newlines and tabs with a single space
+            .replace(/\s+/g, ' ') // replace multiple spaces with a single space
+            .trim(); // remove leading/trailing whitespace (prob not necessary?)
 
+        // parameters for tree visual
         const fontSize = 14;
         const termFont = `${fontSize}pt serif`;
         const nontermFont = `${fontSize}pt serif`;
@@ -108,14 +112,17 @@ function parseNotes(text) {
         const color = true;
         const termLines = false;
 
+        // unique wrapper and id for each tree
+        const idx = num_trees;
         const container = document.createElement('div');
         container.style.textAlign = "center";
+        container.style.margin = "1em 0";
+        container.id = `tree${idx}`;
 
-        // generate tree with go() from syntree.js
-        const svg = go(cleaned, fontSize, termFont, nontermFont, vertSpace, horSpace, color, termLines);
-        container.appendChild(svg);
-
-        return container.outerHTML;
+        // generate svg tree
+        const went = go(cleaned, fontSize, termFont, nontermFont, vertSpace, horSpace, color, termLines);
+        const svgMarkup = new XMLSerializer().serializeToString(went);
+        return svgMarkup; 
     })
     
     // LISTS (SANDWICH!)
