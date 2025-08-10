@@ -4,6 +4,8 @@
 
 % comments
 
+\e This is the first numbered example. \z
+
 This is *bold*. This is **italics**. This is ***bold italics***. 
 This is ~~strikethrough~~. This is _underline_. This is &inline code&. 
 
@@ -20,6 +22,8 @@ Following is an unordered list:
     --u
 - a fourth thing
 --u
+
+\e This is the second numbered example. \z
 
 And now an ordered one:\f[footnote 1!]
 
@@ -45,6 +49,11 @@ Nested Details
 >>
 >>
 
+Following is a syntax tree!!!!!!!:
+
+
+\e \t [S [NP This] [VP [V is] [^NP a wug]]] \t \z
+
 This is a c[citation](link). 
 This is [another link](link).
 This is an &[annotation](that says this).
@@ -56,7 +65,12 @@ Following is a horizontal rule:
 
 | This is a block quote. 
 
+| This is another block quote, <br> but of multiple lines
+
 \c And this is a code block!\c
+
+\c And this is another code block, 
+but of multiple lines!\c
 
 And here's an image, I hope:
 

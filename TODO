@@ -1,10 +1,11 @@
 - syntax trees
 - numbered examples
-- footnotes
 
 // TODO: make numbered examples referenceable in text so that:
         // a) referencing an example links to it
         // and b) the reference number changes if the example order changes 
 
+- code block extend full width always, like block quotes
+- info, warning, error, etc. 
 - annotations
 - better lists
