@@ -1,5 +1,5 @@
-- syntax trees
-- numbered examples
+- polish
+- escape with ' \'; at the end remove all ' \'
 
 // TODO: make numbered examples referenceable in text so that:
         // a) referencing an example links to it
