@@ -1,14 +1,12 @@
 # David's Class Notes
 
-Markdown can sometimes be annoying and ugly. I wanted to 
-make my own markdown system which I can modify as I see fit,
-and display with whatever CSS I want on whatever webpage I want.
+A custom markdown language (generates html from near-plaintext). 
 
-Also, I wanted to make custom blocks for stuff, 
-and examples which are numbered automatically, 
-which you can reference and link to without
-having to change everything after you add one
-more example near the beginning (rghhh overleaf). 
-I also wanted to be able to create syntax trees
-dynamically in a markdown system and not just in LaTeX -- 
-I'm working on that one, lol. 
+Desiderata:
+- easily interpretable/modifiable CSS
+- easily interpretable/modifiable formatting commands
+- ability to generate syntax trees from text
+- different block types for highlights, asides, comments, citations, footnotes, etc.
+- ability to track, reference, and auto-shift example numbers
+
+My syntax tree generator is a modification of Rowan Ackermann's 2024 (forked) generator, which itself is the latest in a long line of modifications of Miles Shang's 2014 version. 

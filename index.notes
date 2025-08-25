@@ -1,0 +1,163 @@
+# Welcome to Trunkate 🐘!
+Trunkate is a custom markdown language I
+created for taking notes in class. 
+
+
+Why not just use markdown? Because:
+-- markdown can't draw syntax trees
+- markdown can't auto-track examples or citations
+- you can't modify the commands easily
+- you can't change how things look easily
+--u
+Why not use a tool like LaTeX? Because (a) LaTeX documents
+involve a lot of fancy commands and I wanted to be able to type
+near-plaintext, and (b) it's much harder to get something to look
+fun and colorful in LaTeX than in CSS. 
+
+
+Following is a short style guide and how-to. :)
+
+----
+For each set of notes you take, you'll have two files:
+
+1. &yourfile.notes&
+- &yourfile.html&
+--o 
+
+&yourfile.notes& is the file you'll write notes in.
+It'll look something like this:
+
+\c this is the file you'll write notes in.
+It'll look something like this.
+\c
+
+&yourfile.html& is the file that'll display these notes dynamically.
+When you navigate to this page, your notes should show up,
+and look nice! You are reading a &.html& file right now. Underneath
+the hood, this &.html& file looks like this:
+
+\c 
+<html>
+<!DOCTYPE html>
+<head>
+    <script>
+        notesPath = 'index.notes';
+    </script>
+    <script src="syntree/js/jquery-1.7.1.min.js"></script>
+    <script src="syntree/js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script src="syntree/js/canvas2svg.js"></script>
+    <script src="syntree/js/syntree.js"></script>
+    <script src="notes.js"></script>
+    <link rel="stylesheet" href="notes.css">
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        loadNotes(notesPath);
+    </script>
+</body>
+
+</html>
+\c
+
+You'll notice that the text I'm writing right now is *not* in this &.html& file.
+That's because the actual content of the notes is found in the &.notes& file.
+All the &.html& file does is take those notes and make them into a webpage.
+So the only things you need to worry about in the &.html& file
+are the &notesPath& (the path to your &.notes& file) and the &stylesheet&
+(the path to the CSS file which will lend your notes some visual flavor).
+
+
+
+
+
+
+
+
+
+# To create headings, 
+## type one or more hashtags at
+### the start of a line
+
+To create a paragraph, just start typing anywhere!
+If you press enter X times in a row, X-1 new lines will be created.
+(This way your .notes file )
+
+% comments
+
+\e This is the first numbered example. \z
+
+Following is a syntax tree!!!!!!!:
+
+
+\e \t [S [NP_a That] [VP [V is] [^NP a wug<a>]]] \t \z
+
+Following is another syntax tree!!!!!!!:
+
+
+\e \t [S [NP This] [VP [V is] [^NP a second wug]]] \t \z
+
+This is *bold*. This is **italics**. This is ***bold italics***. 
+This is ~~strikethrough~~. This is _underline_. This is &inline code&. 
+
+Following is an unordered list:
+-- something
+- something else \f[footnote2!]
+- a third thing
+    -- a separate new third thing
+    - another separate new third thing
+        -- a first second third thing
+        - a second second third thing
+        --u
+    - a third third thing
+    --u
+- a fourth thing
+--u
+
+\e This is the second numbered example. \z
+
+And now an ordered one:\f[footnote 1!]
+
+1. something
+- another thing
+- a third thing
+1. a nested 3.1
+- a nested 3.2
+1. a nested 3.2.1
+- a nested 3.2.2
+--o
+- a nested 3.3
+--o
+- an un-nested fourth thing
+--o
+
+Following will be a summary and some details:
+
+> Summary
+Details
+> Nested Summary
+Nested Details
+>>
+>>
+
+This is a c[citation](link). 
+This is [another link](link).
+This is an &[annotation](that says this).
+
+
+Following is a horizontal rule:
+
+----
+
+| This is a block quote. 
+
+| This is another block quote, <br> but of multiple lines
+
+\c And this is a code block!\c
+
+\c And this is another code block, 
+but of multiple lines!\c
+
+And here's an image, I hope:
+
+![something](https://i.pinimg.com/1200x/bd/ed/c6/bdedc644f183bbb254807bb54f3bf50a.jpg)

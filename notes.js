@@ -143,10 +143,10 @@ function parseNotes(text) {
     
     // LISTS (SANDWICH!)
     .replace(/^\s*\-\-\s/gim, '<ul><li>') // -- start of unordered list
-    .replace(/^\s*1.\s/gim, '<ul><li>') // 1. start of ordered list
+    .replace(/^\s*1.\s/gim, '<ol><li>') // 1. start of ordered list
     .replace(/^\s*\-\s/gim, '</li><li>') // - next list item
     .replace(/^\s*\-\-u/gim, '</li></ul>') // --u end of unordered list
-    .replace(/^\s*\-\-o/gim, '</li></ul>') // --o end of ordered list
+    .replace(/^\s*\-\-o/gim, '</li></ol>') // --o end of ordered list
 
     // Breaks and Rules (this has to come mostly last)
     .replace(/^\s*\-\-\-\-(.*)$/gim, '<hr>') // --- horizontal rule
