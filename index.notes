@@ -11,7 +11,7 @@ Why not just use markdown? Because:
 --u
 Why not use a tool like LaTeX? Because (a) LaTeX documents
 involve a lot of fancy commands and I wanted to be able to type
-near-plaintext, and (b) it's much harder to get something to look
+stuff out without them, and (b) it's much harder to get something to look
 fun and colorful in LaTeX than in CSS. 
 
 
@@ -68,6 +68,13 @@ are the &notesPath& (the path to your &.notes& file) and the &stylesheet&
 (the path to the CSS file which will lend your notes some visual flavor).
 
 
+But you want to be able to create headings, lists, links, examples, callouts,
+trees, and so on. How?
+
+By using *commands*. Some commands will be very familiar if you've used
+markdown-style programs before:
+
+-- single-asterisk for *italics*
 
 
 
