@@ -1,5 +1,6 @@
 - polish
 - escape with ' \'; at the end remove all ' \'
+- color picker top right to set color scheme based off of it procedurally ask chat
 
 // TODO: make numbered examples referenceable in text so that:
         // a) referencing an example links to it
